@@ -4,9 +4,6 @@
 [submodule "ParallelIO"]
 	path = ParallelIO
 	url = git@github.com:NCAR/ParallelIO.git
-[submodule "scorpio"]
-	path = scorpio
-	url = git@github.com:E3SM-Project/scorpio.git
 [submodule "PnetCDF"]
 	path = PnetCDF
 	url = git@github.com:Parallel-NetCDF/PnetCDF.git
