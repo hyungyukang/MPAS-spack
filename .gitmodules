@@ -10,3 +10,6 @@
 [submodule "PnetCDF"]
 	path = PnetCDF
 	url = git@github.com:Parallel-NetCDF/PnetCDF.git
+[submodule "CMake_Fortran_utils"]
+	path = CMake_Fortran_utils
+	url = https://github.com/CESM-Development/CMake_Fortran_utils
