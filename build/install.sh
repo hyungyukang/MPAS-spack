@@ -87,7 +87,6 @@ CC=$cc_comp CXX=$cxx_comp FC=$fc_comp cmake -DCMAKE_INSTALL_PREFIX=${prefix_pio}
                                             -DUSER_CMAKE_MODULE_PATH=${src_fcutil} \
                                             -DGENF90_PATH=${src_genf90} \
                                             $src_pio
-
 make
 make install
 
@@ -111,5 +110,5 @@ fi
 if [ "$install_mpas_model" = true ] ; then
   cd $src_mpas
   make clean CORE=atmosphere
-  make $mpas_target CORE=atmosphere USE_PIO2=true
+  make $mpas_target CORE=atmosphere
 fi
