@@ -10,3 +10,6 @@
 [submodule "CMake_Fortran_utils"]
 	path = CMake_Fortran_utils
 	url = https://github.com/CESM-Development/CMake_Fortran_utils
+[submodule "genf90"]
+	path = genf90
+	url = https://github.com/PARALLELIO/genf90
