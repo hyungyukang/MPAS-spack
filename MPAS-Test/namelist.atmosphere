@@ -1,0 +1,102 @@
+&nhyd_model
+    config_time_integration_order = 2
+    config_dt = 360.0
+    config_start_time = '2022-07-20_18:00:00'
+    config_run_duration = '48:00:00'
+    config_split_dynamics_transport = true
+    config_number_of_sub_steps = 2
+    config_dynamics_split_steps = 3
+
+    config_horiz_mixing = '2d_smagorinsky'
+    config_len_disp = 120000.0
+    config_visc4_2dsmag = 0.05
+    config_scalar_advection = true
+    config_monotonic = true
+    config_coef_3rd_order = 0.25
+    config_epssm = 0.1
+    config_smdiv = 0.1
+
+    !config_h_mom_eddy_visc2 = 0.0
+    !config_h_mom_eddy_visc4 = 0.0
+    !config_v_mom_eddy_visc2 = 0.0
+    !config_h_theta_eddy_visc2 = 0.0
+    !config_h_theta_eddy_visc4 = 0.0
+    !config_v_theta_eddy_visc2 = 0.0
+    !config_horiz_mixing = '2d_smagorinsky'
+    !config_len_disp = 500.0
+    !config_visc4_2dsmag = 0.05
+    !config_w_adv_order = 3
+    !config_theta_adv_order = 3
+    !config_scalar_adv_order = 3
+    !config_u_vadv_order = 3
+    !config_w_vadv_order = 3
+    !config_theta_vadv_order = 3
+    !config_scalar_vadv_order = 3
+    !config_scalar_advection = true
+    !config_positive_definite = true
+    !config_monotonic = true
+    !config_coef_3rd_order = 0.25
+    !config_epssm = 0.1
+    !config_smdiv = 0.1
+    !config_relax_zone_divdamp_coef = 5.0
+    !config_del4u_div_factor = 5.0
+/
+&damping
+    config_zd = 21000.0
+    config_xnutr = 0.2
+    !config_mpas_cam_coef = 0.2
+    !config_number_cam_damping_levels = 8
+    !config_rayleigh_damp_u = true
+    !config_rayleigh_damp_u_timescale_days = 5.0
+    !config_number_rayleigh_damp_u_levels = 10
+/
+&limited_area
+    config_apply_lbcs = false
+/
+&io
+    config_pio_num_iotasks = 0
+    config_pio_stride = 1
+/
+&decomposition
+    !config_block_decomp_file_prefix = 'init/x5_20km-4km_D500_OR-SF-BST_N1598483_graph.info.part.'
+    !config_block_decomp_file_prefix = 'init/x20_20km-1km_R750_OakRidge_N2224178_graph.info.part.'
+    !config_block_decomp_file_prefix = 'init/x5_20km-4km_OakRidge_N1544927_graph.info.part.'
+    config_block_decomp_file_prefix = 'init_files/graph.info/x1.120km.graph.info.part.'
+/
+&restart
+    config_do_restart = false
+/
+&printout
+    config_print_global_minmax_vel = true
+    config_print_detailed_minmax_vel = false
+/
+&IAU
+    config_IAU_option = 'off'
+    config_IAU_window_length_s = 21600.
+/
+&physics
+    config_sst_update = false
+    config_sstdiurn_update = false
+    config_deepsoiltemp_update = false
+    config_radtlw_interval = '01:00:00'
+    config_radtsw_interval = '01:00:00'
+    config_bucket_update = 'none'
+
+    !config_physics_suite = 'convection_permitting'
+
+    config_physics_suite = 'mesoscale_reference'
+
+    !config_convection_scheme =  'off'
+
+    !config_microp_scheme =  'mp_thompson'
+    !config_lsm_scheme = 'noah'
+    !config_pbl_scheme = 'bl_ysu'
+    !config_sfclayer_scheme = 'sf_monin_obukhov'
+    !config_radt_lw_scheme = 'rrtmg_lw'
+    !config_radt_sw_scheme = 'rrtmg_sw'
+    !config_radt_cld_scheme = 'cld_fraction'
+    !config_gwdo_scheme = 'bl_ysu_gwdo'
+/
+&soundings
+    config_sounding_interval = 'none'
+/

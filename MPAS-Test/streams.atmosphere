@@ -1,0 +1,33 @@
+<streams>
+<immutable_stream name="input"
+                  type="input"
+                  filename_template="./init_files/x1.120km.init.2022072018.nc"
+                  input_interval="initial_only" />
+
+<immutable_stream name="restart"
+                  type="input;output"
+                  filename_template="restart.$Y-$M-$D_$h.$m.$s.nc"
+                  input_interval="initial_only"
+                  output_interval="10_00:00:00" />
+
+<stream name="output"
+        type="output"
+        filename_interval="10_00:00:00"
+        filename_template="outputs/history.$Y-$M-$D_$h.$m.$s.nc"
+        output_interval="1:00:00"
+        clobber_mode="replace_files">
+
+	<file name="stream_list.atmosphere.output"/>
+</stream>
+
+<stream name="diagnostics"
+        type="output"
+        filename_interval="10_00:00:00"
+        filename_template="outputs/diag.$Y-$M-$D_$h.$m.$s.nc"
+        output_interval="1:00:00"
+        clobber_mode="replace_files" >
+
+	<file name="stream_list.atmosphere.diagnostics"/>
+</stream>
+
+</streams>
