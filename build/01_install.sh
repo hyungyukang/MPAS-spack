@@ -28,8 +28,6 @@ wdir=`pwd`
 
 source ./set_machine.sh
 
-echo $NETCDFF
-
 
 # =========================================================================
 # Install & Run ===========================================================
@@ -57,6 +55,7 @@ if [ "$install_pio" = true ] ; then
                                                   -DNetCDF_PATH=${NETCDF} \
                                                   -DNetCDF_C_PATH=${NETCDF} \
                                                   -DNetCDF_Fortran_PATH=${NETCDF} \
+                                                  -DPnetCDF_PATH=${PNETCDF_DIR} \
                                                   -DUSER_CMAKE_MODULE_PATH=${src_fcutil} \
                                                   -DGENF90_PATH=${src_genf90} \
                                                   $src_pio &> $log_pio

@@ -29,6 +29,7 @@ source $env_config
 
 if [ -n "$NETCDF_DIR" ]; then
    NETCDF=$NETCDF_DIR
+   NETCDFF=$NETCDF_DIR
 fi
 
 # =========================================================================
