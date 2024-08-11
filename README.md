@@ -8,7 +8,13 @@
 git clone git@github.com:hyungyukang/MPAS-spack.git
 cd MPAS-spack
 git submodule update --init --recursive
-cd build
+
+# Download initial condition
+cd MPAS-spack/MPAS-Test/init_files
+wget -O x1.120km.init.2022072018.nc "https://www.dropbox.com/scl/fi/54bn1rroze5p1x0ng2270/x1.120km.init.2022072018.nc?rlkey=0b3tqvrzrpu00bsildpnj8d4w&st=1ftikfd1&dl=0"
+
+# Build, run, verification
+cd MPAS-spack/build
 
 # Install PIO and MPAS-Atmosphere
 ./01_install.sh
