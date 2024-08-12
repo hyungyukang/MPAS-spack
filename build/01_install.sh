@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Checklist by users
-#   1. set_machine.sh
+#   1. configure_machine.sh
 #   2. machine_envs/envs_*.sh
 #     - mpas_target in MPAS-Model/Makefile
 #   3. job_scripts/job_*.sh
@@ -26,8 +26,7 @@ wdir=`pwd`
 # Machine setup
 # =========================================================================
 
-source ./set_machine.sh
-
+source ./configure_machine.sh
 
 # =========================================================================
 # Install & Run ===========================================================
@@ -58,6 +57,7 @@ if [ "$install_pio" = true ] ; then
                                                   -DPnetCDF_PATH=${PNETCDF_DIR} \
                                                   -DUSER_CMAKE_MODULE_PATH=${src_fcutil} \
                                                   -DGENF90_PATH=${src_genf90} \
+                                                  -DPIO_ENABLE_TIMING=OFF \
                                                   $src_pio &> $log_pio
    then
       echo "   [cmake] completed successfully."
@@ -92,9 +92,6 @@ fi  # install_pio
 #------------------------------------------------------------
 # Install MPAS-Model
 #------------------------------------------------------------
-
-PIO=$prefix_pio
-NETCDFF=${NETCDF}
 
 if [ "$install_mpas" = true ] ; then
 

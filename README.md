@@ -1,20 +1,25 @@
 # MPAS-spack
 ## MPAS-Atmosphere test suite
 ### Collection of MPAS-Model and required libraries as submodules to run a test case
-
 The following are provided, except the model and library codes:
 - Build scripts
 - Job batch script
 - Initial condition for a test case
 - Reference output for verification  
 
-## Quick start (tested on Perlmutter and Frontier)
+## Quick start (tested on HPC11 and Frontier)
 
 ### User check list
 1. Machine configuration: build/set_machine.sh
-2. Machine environmental: build/envs/envs_*.sh
+2. Machine environmental: build/envs/envs_<machine>_<compiler>.sh
    - mpas_target in MPAS-Model/Makefile
-3. Job batch script: build/job_scripts/job_*.sh
+3. Job batch script: build/job_scripts/job_<machine>_<compiler>.sh
+
+#### For a new machine, user must create system files below
+1. Machine environmental: build/envs/envs_<machine>_<compiler>.sh
+2. Job batch script: build/job_scripts/job_<machine>_<compiler>.sh
+3. Check and choose appropriate mpas_target in MPAS-Model/Makefile
+   - Users can create a customized target.
 
 ### Build, run, and verification
 

@@ -13,17 +13,21 @@ wdir=`pwd`
 # =========================================================================
 
 # HPC11 : GNU ----------------------------------------
-env_config=${wdir}/envs/envs_HPC11_GNU.sh
-job_script=${wdir}/job_scripts/job_HPC11.sh
+machine=HPC11
+compiler=GNU
 batch_command=sbatch
 
-# Frontier : GNU -------------------------------------
-#source $wdir/envs/envs_Frontier_GNU.sh
-
-# Perlmutter : GNU -----------------------------------
-#source $wdir/envs/envs_Perlmutter_GNU.sh
+# Frontier: GNU | Cray -------------------------------
+#machine=Frontier
+#compiler=GNU # Or Cray
+#batch_command=sbatch
 
 #-----------------------------------------------------
+
+env_config=${wdir}/envs/envs_${machine}_${compiler}.sh
+job_script=${wdir}/job_scripts/job_${machine}.sh
+
+# =========================================================================
 
 source $env_config
 
@@ -31,6 +35,8 @@ if [ -n "$NETCDF_DIR" ]; then
    NETCDF=$NETCDF_DIR
    NETCDFF=$NETCDF_DIR
 fi
+export NETCDF=$NETCDF_DIR
+export NETCDFF=$NETCDF_DIR
 
 # =========================================================================
 # Directory setup =========================================================
@@ -40,6 +46,7 @@ fi
 src_pio=${wdir}/../ParallelIO
 prefix_pio=${wdir}/ParallelIO
 PIO=$prefix_pio
+export PIO=$prefix_pio
 
 # CMake Fortran utils directory
 src_fcutil=${wdir}/../CMake_Fortran_utils
