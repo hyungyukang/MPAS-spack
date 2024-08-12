@@ -2,7 +2,8 @@
 ## MPAS-Atmosphere test suite
 ### Collection of MPAS-Model and required libraries as submodules to run a test case
 
-- Build scripts, job batch scripts, and an initial condition for a test case are provided.
+The following are provided, except the model and library codes:
+- Build scripts
 - Job batch script
 - Initial condition for a test case
 - Reference output for verification  
