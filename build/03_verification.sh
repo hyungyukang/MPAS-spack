@@ -24,7 +24,7 @@ verif_dir=$wdir/verification
 # Machine setup
 # =========================================================================
 
-source ./set_machine.sh
+source ./configure_machine.sh
 
 # =========================================================================
 # Compile the verification code

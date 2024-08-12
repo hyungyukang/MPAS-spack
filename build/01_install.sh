@@ -11,6 +11,7 @@
 #   - Parallel-NetCDF
 #   - ParallelIO
 
+
 # =========================================================================
 # Test process choice
 # =========================================================================
@@ -22,11 +23,13 @@ run_mpas_test=false # if false, user can run the test case separately by running
 # work directory
 wdir=`pwd`
 
+
 # =========================================================================
 # Machine setup
 # =========================================================================
 
 source ./configure_machine.sh
+
 
 # =========================================================================
 # Install & Run ===========================================================
@@ -97,22 +100,52 @@ if [ "$install_mpas" = true ] ; then
 
    log_mpas=compile_mpas.log
    echo "--- Installing MPAS-Atmosphere (this will take several minutes.) ---"
- 
-   cd $src_mpas
-   make clean CORE=atmosphere &> clean.log
-   echo "   [make clean CORE=atmosphere] completed successfully."
- 
-   if 
-      make $mpas_target CORE=atmosphere &> $log_mpas
+
+   if [ -d "$build_mpas" ]; then
+      rm -rf $build_mpas
+   fi
+
+   mkdir $build_mpas
+
+   if
+      cd $build_mpas
+      CC=$CC CXX=$CXX FC=$FC cmake -DCMAKE_INSTALL_PREFIX=${run_dir} \
+                                                  -DNetCDF_PATH=${NETCDF} \
+                                                  -DNetCDF_C_PATH=${NETCDF} \
+                                                  -DNetCDF_Fortran_PATH=${NETCDF} \
+                                                  -DPnetCDF_PREFIX=${PNETCDF_DIR} \
+                                                  -DPIO_PREFIX=${prefix_pio} \
+                                                  -DFETCHCONTENT_SOURCE_DIR_MPAS_DATA=${src_mpas}/src/core_atmosphere \
+                                                  -DFETCHCONTENT_UPDATES_DISCONNECTED=ON \
+                                                  -S $src_mpas \
+                                                  -B . &> $log_mpas
+
    then
-      echo "   [make $mpas_target CORE=atmosphere] completed successfully."
+      echo "   [cmake] completed successfully."
    else
-      echo "   [make $mpas_target CORE=atmosphere] error: log = `pwd`/$log_mpas"
+      echo "   [cmake] error: log = `pwd`/$log_mpas"
+      exit 1
+   fi
+   #-------
+   if
+      make -j 4 &>> $log_mpas
+   then
+      echo "   [make] completed successfully."
+   else
+      echo "   [make] error: log = `pwd`/$log_mpas"
+      exit 1
+   fi
+   #-------
+   if
+      make install &>> $log_mpas
+   then
+      echo "   [make install] completed successfully."
+   else
+      echo "   [make install] error: log = `pwd`/$log_mpas"
       exit 1
    fi
 
 fi # install_mpas
-
 
 # =========================================================================
 # Run test ================================================================

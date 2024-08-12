@@ -10,23 +10,30 @@ wdir=`pwd`
 # Machine setup
 # =========================================================================
 
-source ./set_machine.sh
+source ./configure_machine.sh
 
 # =========================================================================
 # Run =====================================================================
 # =========================================================================
 
+# Building Thompson cloud microphysics scheme
+if [ ! -f "$src_mpas/src/core_atmosphere/physics/physics_wrf/files/MP_THOMPSON_QRacrQG_DATA.DBL" ]; then
+   cd $build_mpas/bin
+   ./mpas_atmosphere_build_tables
+   cp MP_THOM* $src_mpas/src/core_atmosphere/physics/physics_wrf/files/
+fi
+
+# Enter run dir
 cd $run_dir
 
 # Copy job script & env
-
 cp $job_script ./
 cp $env_config ./env.sh
 echo 'PIO='$PIO >> env.sh
 source ./env.sh
 
 # Link MPAS executable
-ln -fs $src_mpas/atmosphere_model ./
+ln -fs $build_mpas/bin/mpas_atmosphere ./
 
 # Link MPAS physics tables
 ln -fs $src_mpas/src/core_atmosphere/physics/physics_wrf/files/* ./

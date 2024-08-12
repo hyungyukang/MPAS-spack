@@ -17,17 +17,18 @@ machine=HPC11
 compiler=GNU
 batch_command=sbatch
 
-# Frontier: GNU | Cray -------------------------------
+# Frontier: GNU --------------------------------------
 #machine=Frontier
-#compiler=GNU # Or Cray
+#compiler=GNU
 #batch_command=sbatch
+
 
 #-----------------------------------------------------
 
 env_config=${wdir}/envs/envs_${machine}_${compiler}.sh
 job_script=${wdir}/job_scripts/job_${machine}.sh
 
-# =========================================================================
+#-----------------------------------------------------
 
 source $env_config
 
@@ -35,8 +36,6 @@ if [ -n "$NETCDF_DIR" ]; then
    NETCDF=$NETCDF_DIR
    NETCDFF=$NETCDF_DIR
 fi
-export NETCDF=$NETCDF_DIR
-export NETCDFF=$NETCDF_DIR
 
 # =========================================================================
 # Directory setup =========================================================
@@ -59,3 +58,4 @@ src_mpas=${wdir}/../MPAS-Model
 
 # MPAS-Test run directory
 run_dir=${wdir}/../MPAS-Test
+build_mpas=${wdir}/mpas-atmosphere
