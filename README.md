@@ -12,14 +12,11 @@ The following are provided, except the model and library codes:
 ### User check list
 1. Machine configuration: build/set_machine.sh
 2. Machine environmental: build/envs/envs_[machine]_[compiler].sh
-   - mpas_target in MPAS-Model/Makefile
-3. Job batch script: build/job_scripts/job[<machine]_[compiler].sh
+3. Job batch script: build/job_scripts/job_[machine].sh
 
-#### For a new machine, user must create system files below
+### For a new machine, user must create system files below
 1. Machine environmental: build/envs/envs_[machine]_[compiler].sh
-2. Job batch script: build/job_scripts/job_[machine]_[compiler].sh
-3. Check and choose appropriate mpas_target in MPAS-Model/Makefile
-   - Users can create a customized target.
+2. Job batch script: build/job_scripts/job_[machine].sh
 
 ### Build, run, and verification
 
@@ -44,5 +41,3 @@ cd MPAS-spack/build
 # Verify results at 48 h
 ./03_verification.sh
 ```
-
-
