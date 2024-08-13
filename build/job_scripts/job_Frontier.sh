@@ -8,4 +8,4 @@
 
 source ./env.sh
 echo $PIO
-srun -n 56 -N 1 ./atmosphere_model -s streams.atmosphere -n namelist.atmosphere
+srun -n 56 -N 1 ./mpas_atmosphere -s streams.atmosphere -n namelist.atmosphere
