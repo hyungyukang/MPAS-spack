@@ -24,7 +24,7 @@ if [[ "$machine" == "HPC11" ]]; then
       echo "   "
       echo " This is done only once, unless MPAS-Model is downloaded again."
       ./mpas_atmosphere_build_tables
-      cp MP_THOM* $build_mpas/_deps/mpas_data-src/atmosphere/physics_wrf/files
+      cp MP_THOM* $src_mpas/src/core_atmosphere/physics/physics_wrf/files/
    fi
 else
    if [ ! -f "$build_mpas/_deps/mpas_data-src/atmosphere/physics_wrf/files/MP_THOMPSON_QRacrQG_DATA.DBL" ]; then
