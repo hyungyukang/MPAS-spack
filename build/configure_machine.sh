@@ -2,14 +2,13 @@
 
 # Checklist by users
 #   1. envs/envs_*.sh
-#   2. mpas_target - MPAS-Model/Makefile
-#   3. job_scripts/job_*.sh
+#   2. job_scripts/job_*.sh
 
 # work directory
 wdir=`pwd`
 
 # =========================================================================
-# Machine setup 
+# Machine setup : User modification section
 # =========================================================================
 
 # HPC11 : GNU ----------------------------------------
@@ -22,14 +21,16 @@ batch_command=sbatch
 #compiler=GNU
 #batch_command=sbatch
 
-
-#-----------------------------------------------------
+# =========================================================================
+# End of user modification section
+# =========================================================================
 
 env_config=${wdir}/envs/envs_${machine}_${compiler}.sh
 job_script=${wdir}/job_scripts/job_${machine}.sh
 
 #-----------------------------------------------------
 
+# Source machine environmental config
 source $env_config
 
 if [ -n "$NETCDF_DIR" ]; then

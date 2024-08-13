@@ -1,11 +1,13 @@
 #!/bin/sh
 
+# =========================================================================
 # Checklist by users
+# =========================================================================
 #   1. configure_machine.sh
 #   2. machine_envs/envs_*.sh
-#     - mpas_target in MPAS-Model/Makefile
 #   3. job_scripts/job_*.sh
 
+#------------------------------------------------------------
 # Required library
 #   - NetCDF
 #   - Parallel-NetCDF
