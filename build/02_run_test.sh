@@ -62,8 +62,9 @@ jscript=`basename $job_script`
 if 
    $batch_command $job_script &> $log_job
 then
-   echo "   [$batch_command $jscript] Job is submitted successfully in $run_dir"
-   echo "                             Once the job is done, move to next step."
+   echo "   [$batch_command $jscript] Job is submitted successfully in $run_dir:"
+   tail $log_job
+   echo "   Once the job is done, move to next step."
 else
    echo "   [$batch_command $jscript] error: log = `pwd`/$log_job"
 fi
