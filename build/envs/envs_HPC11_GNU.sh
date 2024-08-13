@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# MPAS-Model compilation target (can be found in MPAS-Model/Makefile)
-mpas_target=gnu-nersc
-
 # Module load 
 module purge
 module load PrgEnv-gnu

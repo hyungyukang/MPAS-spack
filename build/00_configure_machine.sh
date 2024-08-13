@@ -21,6 +21,11 @@ batch_command=sbatch
 #compiler=GNU
 #batch_command=sbatch
 
+# Perlmutter: GNU --------------------------------------
+#machine=Perlmutter
+#compiler=GNU
+#batch_command=sbatch
+
 # =========================================================================
 # End of user modification section
 # =========================================================================
