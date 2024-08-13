@@ -7,7 +7,9 @@ The following are provided, except the model and library codes:
 - Initial condition for a test case
 - Reference output for verification  
 
-## Quick start (tested on HPC11 and Frontier)
+## Quick start 
+- Tested on HPC11, Frontier, and Perlmutter using GNU compiler
+- Frontier has a problem with verification for now.
 
 ### User check list
 1. Machine configuration: build/set_machine.sh
