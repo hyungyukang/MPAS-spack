@@ -1,5 +1,6 @@
 #!/bin/bash
 #SBATCH -A m4259
+#SBATCH -C cpu
 #SBATCH -J MPASRUN
 #SBATCH -N 1
 #SBATCH -t 0:30:00
