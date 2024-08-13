@@ -17,13 +17,24 @@ source ./00_configure_machine.sh
 # =========================================================================
 
 # Building Thompson cloud microphysics scheme
-if [ ! -f "$src_mpas/src/core_atmosphere/physics/physics_wrf/files/MP_THOMPSON_QRacrQG_DATA.DBL" ]; then
-   cd $build_mpas/bin
-   echo "   "
-   echo " This is done only once, unless MPAS-Model is downloaded again."
-   ./mpas_atmosphere_build_tables
-   cp MP_THOM* $src_mpas/src/core_atmosphere/physics/physics_wrf/files/
+
+cd $build_mpas/bin
+if [[ "$machine" == "HPC11" ]]; then
+   if [ ! -f "$src_mpas/src/core_atmosphere/physics/physics_wrf/files/MP_THOMPSON_QRacrQG_DATA.DBL" ]; then
+      echo "   "
+      echo " This is done only once, unless MPAS-Model is downloaded again."
+      ./mpas_atmosphere_build_tables
+      cp MP_THOM* $build_mpas/_deps/mpas_data-src/atmosphere/physics_wrf/files
+   fi
+else
+   if [ ! -f "$build_mpas/_deps/mpas_data-src/atmosphere/physics_wrf/files/MP_THOMPSON_QRacrQG_DATA.DBL" ]; then
+      echo "   "
+      echo " This is done only once, unless MPAS-Model is downloaded again."
+      ./mpas_atmosphere_build_tables
+      cp MP_THOM* $build_mpas/_deps/mpas_data-src/atmosphere/physics_wrf/files
+   fi
 fi
+
 
 # Enter run dir
 cd $run_dir
@@ -38,7 +49,11 @@ source ./env.sh
 ln -fs $build_mpas/bin/mpas_atmosphere ./
 
 # Link MPAS physics tables
-ln -fs $src_mpas/src/core_atmosphere/physics/physics_wrf/files/* ./
+if [[ "$machine" == "HPC11" ]]; then
+   ln -fs $src_mpas/src/core_atmosphere/physics/physics_wrf/files/* ./
+else
+   ln -fs $build_mpas/_deps/mpas_data-src/atmosphere/physics_wrf/files/* ./
+fi
 
 # Submit a job
 log_job=submit_job.log
