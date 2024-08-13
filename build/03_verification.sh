@@ -31,9 +31,20 @@ source ./00_configure_machine.sh
 
 cd $verif_dir
 
-# Link MPAS-Test output
-ln -fs $run_dir/outputs/history.2022-07-20_18.00.00.nc ./
+if [ -f "$run_dir/outputs/history.2022-07-20_18.00.00.nc" ]; then
+   # Link MPAS-Test output
+   ln -fs $run_dir/outputs/history.2022-07-20_18.00.00.nc ./
+   
+   $FC -o verify.exe verify.f90 -lnetcdf
+   ./verify.exe
+else
+   echo "   "
+   echo " Output file does not exist: "
+   echo "      $run_dir/outputs/history.2022-07-20_18.00.00.nc"
+   echo "   "
+   echo " Please check 'log.atmosphere...' in the test directory  "
+   echo "      $run_dir"
+fi
 
-$FC -o verify.exe verify.f90 -lnetcdf
-./verify.exe
+
 
