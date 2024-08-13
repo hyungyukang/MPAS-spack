@@ -18,7 +18,7 @@
 # Test process choice
 # =========================================================================
 
-install_pio=false # ParallelIO installation
+install_pio=true # ParallelIO installation
 install_mpas=true # MPAS-Atmosphere installation
 run_mpas_test=false # if false, user can run the test case separately by running 'run_test.sh'.
 
