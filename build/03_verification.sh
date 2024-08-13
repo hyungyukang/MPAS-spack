@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Checklist by users
-#   1. configure_machine.sh
+#   1. 00_configure_machine.sh
 #   2. machine_envs/envs_*.sh
 #   3. job_scripts/job_*.sh
 
@@ -23,7 +23,7 @@ verif_dir=$wdir/verification
 # Machine setup
 # =========================================================================
 
-source ./configure_machine.sh
+source ./00_configure_machine.sh
 
 # =========================================================================
 # Compile the verification code
