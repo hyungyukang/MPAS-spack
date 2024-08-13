@@ -32,6 +32,9 @@ wget -O x1.120km.init.2022072018.nc "https://www.dropbox.com/scl/fi/54bn1rroze5p
 # Build, run, verification
 cd MPAS-spack/build
 
+# Check machine configurations
+vi 00_configure_machine
+
 # Install PIO and MPAS-Atmosphere
 ./01_install.sh
 
