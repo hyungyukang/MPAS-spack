@@ -112,7 +112,6 @@ if [ "$install_mpas" = true ] ; then
    mkdir $build_mpas
    #------------------------------------------------
    if
-      cd $build_mpas
 
       if [[ "$machine" == "HPC11" ]]; then   # HPC11 has a different cmake command.
          if [ ! -d "${src_mpas}/src/core_atmosphere/atmosphere" ]; then
@@ -120,6 +119,8 @@ if [ "$install_mpas" = true ] ; then
             cd ${src_mpas}/src/core_atmosphere/atmosphere
             ln -fs ${src_mpas}/src/core_atmosphere/physics ./
          fi
+
+         cd $build_mpas
 
          CC=$CC CXX=$CXX FC=$FC cmake -DCMAKE_INSTALL_PREFIX=${run_dir} \
                                       -DNetCDF_PATH=${NETCDF} \
@@ -133,6 +134,8 @@ if [ "$install_mpas" = true ] ; then
                                       -B . &> $log_mpas
 
       else # machine
+
+         cd $build_mpas
 
          CC=$CC CXX=$CXX FC=$FC cmake -DCMAKE_INSTALL_PREFIX=${run_dir} \
                                       -DNetCDF_PATH=${NETCDF} \

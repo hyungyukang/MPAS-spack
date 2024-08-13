@@ -19,7 +19,8 @@ source ./00_configure_machine.sh
 # Building Thompson cloud microphysics scheme
 if [ ! -f "$src_mpas/src/core_atmosphere/physics/physics_wrf/files/MP_THOMPSON_QRacrQG_DATA.DBL" ]; then
    cd $build_mpas/bin
-   echo "This is done only once, unless MPAS-Model is downloaded again."
+   echo "   "
+   echo " This is done only once, unless MPAS-Model is downloaded again."
    ./mpas_atmosphere_build_tables
    cp MP_THOM* $src_mpas/src/core_atmosphere/physics/physics_wrf/files/
 fi
